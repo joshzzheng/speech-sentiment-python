@@ -1,6 +1,5 @@
 import os
 import json
-import sys
 from os.path import join, dirname
 from dotenv import load_dotenv
 from watson_developer_cloud import SpeechToTextV1 as SpeechToText
