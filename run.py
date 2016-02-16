@@ -26,10 +26,7 @@ def get_text_sentiment(text):
         return 'netural', 0
     return result['docSentiment']['type'], result['docSentiment']['score']
 
-if __name__ == '__main__':
-    dotenv_path = join(dirname(__file__), '.env')
-    load_dotenv(dotenv_path)
-
+def main():
     recorder = Recorder("speech.wav")
 
     print("Please say something nice into the microphone\n")
@@ -42,5 +39,15 @@ if __name__ == '__main__':
     print("Text: " + text + "\n")
     
     sentiment, score = get_text_sentiment(text)
-    print(sentiment, score)
+    print(sentiment, score)  
+
+if __name__ == '__main__':
+    dotenv_path = join(dirname(__file__), '.env')
+    load_dotenv(dotenv_path)
+    try:
+        main()
+    except:
+        print("IOError detected, restarting...")
+        main()
+
 
